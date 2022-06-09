@@ -2,30 +2,41 @@ package com.techelevator.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class VendingMachine {
     private int availableFunds; //derived
     private Map<String, Object> inventoryMap;
-    private int amountDeposited;
     private int customerChange; //derived
 
 
-    public Map<String, Object> getInventoryMap() {
+    public VendingMachine(Map<String,Object> inventoryMap, int availableFunds, int customerChange) {
+        this.inventoryMap = inventoryMap;
+        this.availableFunds = 0;
+        this.customerChange = 0;
+    }
 
-
+    public Map<String, Object> getInventoryMap() throws FileNotFoundException {
+        inventoryMap = loadInventory();
         return inventoryMap;
     }
+
+    public int addFunds(int funds){
+        availableFunds += funds;
+        return availableFunds;
+    }
+
+    public List<Item> makePurchase() {
+        List<Item> purchased = new ArrayList<>();
+    }
+
 
     private Map<String, Object> loadInventory() throws FileNotFoundException {
 
         String filePath = "C:\\Users\\Student\\workspace\\mod-1-capstone-java-team-1\\vendingmachine.csv";
         File inputFile = new File(filePath);
 
-        Map<String, Object> inventoryMap = new HashMap<>();
+        Map<String, Object> inventoryMap = new TreeMap<>();
 
 
         try (Scanner fileScanner = new Scanner(inputFile)) {
@@ -60,6 +71,8 @@ public class VendingMachine {
             return inventoryMap;
 
         }
+
+
     }
 }
 
