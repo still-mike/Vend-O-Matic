@@ -10,10 +10,8 @@ public class VendingMachine {
     private int customerChange; //derived
 
 
-    public VendingMachine(Map<String,Object> inventoryMap, int availableFunds, int customerChange) {
+    public VendingMachine(Map<String,Object> inventoryMap) {
         this.inventoryMap = inventoryMap;
-        this.availableFunds = 0;
-        this.customerChange = 0;
     }
 
     public VendingMachine() {}

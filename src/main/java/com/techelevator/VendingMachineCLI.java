@@ -10,7 +10,9 @@ public class VendingMachineCLI {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
+	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT};
+
 
 	private Menu menu;
 
@@ -24,10 +26,12 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
+
 	public void run() throws FileNotFoundException {
-		while (true) {
+		boolean running = true;
+		while (running) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
-			VendingMachine vendingMachine  = new VendingMachine();
+			VendingMachine vendingMachine = new VendingMachine();
 			// (1) Display Vending Machine Items
 			// (2) Purchase
 			// (3) Exit
@@ -36,22 +40,28 @@ public class VendingMachineCLI {
 				Map<String, Object> inventoryMap = vendingMachine.getInventoryMap();
 
 
-						for (Map.Entry <String, Object> entry : inventoryMap.entrySet()) {
-							System.out.println(entry.getKey() + ": " + entry.getValue().toString());
-						}
+				for (Map.Entry<String, Object> entry : inventoryMap.entrySet()) {
+					System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+				}
 
 				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
+
+
+			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+				running = false;
 			}
 		}
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
-		Menu menu = new Menu(System.in, System.out);
-		VendingMachineCLI cli = new VendingMachineCLI(menu);
-		cli.run();
-	}
+
+			public static void main (String[]args) throws FileNotFoundException {
+				Menu menu = new Menu(System.in, System.out);
+				VendingMachineCLI cli = new VendingMachineCLI(menu);
+				cli.run();
+			}
 
 
-}
+		}
+
