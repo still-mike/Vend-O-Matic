@@ -14,6 +14,9 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 
+	private VendingMachine vendingMachine;
+
+
 
 
 
@@ -21,11 +24,18 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
-	public void run() {
+	public void run() throws FileNotFoundException {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			// (1) Display Vending Machine Items
+			// (2) Purchase
+			// (3) Exit
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+				Map inventoryMap = vendingMachine.getInventoryMap() 
+
+						for (Map.Entry <String, Object> inventory : inventoryMap.entrySet())
+
 				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
