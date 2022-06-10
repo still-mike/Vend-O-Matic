@@ -32,7 +32,7 @@ public class VendingMachineCLI {
 			// (3) Exit
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				Map inventoryMap = vendingMachine.getInventoryMap() 
+				Map inventoryMap = vendingMachine.getInventoryMap()
 
 						for (Map.Entry <String, Object> inventory : inventoryMap.entrySet())
 
