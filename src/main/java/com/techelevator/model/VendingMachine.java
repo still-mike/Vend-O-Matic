@@ -16,6 +16,8 @@ public class VendingMachine {
         this.customerChange = 0;
     }
 
+    public VendingMachine() {}
+
     public Map<String, Object> getInventoryMap() throws FileNotFoundException {
         inventoryMap = loadInventory();
         return inventoryMap;
@@ -26,9 +28,9 @@ public class VendingMachine {
         return availableFunds;
     }
 
-    public List<Item> makePurchase() {
-        List<Item> purchased = new ArrayList<>();
-    }
+//    public List<Item> makePurchase() {
+//        List<Item> purchased = new ArrayList<>();
+//    }
 
 
     private Map<String, Object> loadInventory() throws FileNotFoundException {
@@ -47,22 +49,22 @@ public class VendingMachine {
 
 
                 if (parts[3].equals("Chip")) {
-                    Item item = new Chip(parts[1], Integer.parseInt(parts[2]), parts[3]);
-                    inventoryMap.put(parts[0], item);
+                    Item chip = new Chip(parts[1], Double.parseDouble(parts[2]));
+                    inventoryMap.put(parts[0], chip);
 
 
                 } else if (parts[3].equals("Gum")) {
-                    Item item = new Gum(parts[1], Integer.parseInt(parts[2]), parts[3]);
-                    inventoryMap.put(parts[0], item);
+                    Item gum = new Gum(parts[1], Double.parseDouble(parts[2]));
+                    inventoryMap.put(parts[0], gum);
 
 
                 } else if (parts[3].equals("Candy")) {
-                    Item item = new Candy(parts[1], Integer.parseInt(parts[2]), parts[3]);
-                    inventoryMap.put(parts[0], item);
+                    Item candy = new Candy(parts[1], Double.parseDouble(parts[2]));
+                    inventoryMap.put(parts[0], candy);
 
                 } else if (parts[3].equals("Beverage")) {
-                    Item item = new Beverage(parts[1], Integer.parseInt(parts[2]), parts[3]);
-                    inventoryMap.put(parts[0], item);
+                    Item beverage = new Beverage(parts[1], Double.parseDouble(parts[2]));
+                    inventoryMap.put(parts[0], beverage);
 
 
                 }

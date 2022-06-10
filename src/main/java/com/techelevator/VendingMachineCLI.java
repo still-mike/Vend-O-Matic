@@ -27,14 +27,18 @@ public class VendingMachineCLI {
 	public void run() throws FileNotFoundException {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			VendingMachine vendingMachine  = new VendingMachine();
 			// (1) Display Vending Machine Items
 			// (2) Purchase
 			// (3) Exit
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				Map inventoryMap = vendingMachine.getInventoryMap()
+				Map<String, Object> inventoryMap = vendingMachine.getInventoryMap();
+				System.out.println(inventoryMap);
 
-						for (Map.Entry <String, Object> inventory : inventoryMap.entrySet())
+						for (Map.Entry <String, Object> entry : inventoryMap.entrySet()) {
+							System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+						}
 
 				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
