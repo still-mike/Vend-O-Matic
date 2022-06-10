@@ -34,7 +34,7 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				Map<String, Object> inventoryMap = vendingMachine.getInventoryMap();
-				System.out.println(inventoryMap);
+
 
 						for (Map.Entry <String, Object> entry : inventoryMap.entrySet()) {
 							System.out.println(entry.getKey() + ": " + entry.getValue().toString());

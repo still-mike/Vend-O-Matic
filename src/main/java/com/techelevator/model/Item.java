@@ -7,8 +7,21 @@ public class Item {
    public Item(String name, double price) {
        this.price = price;
        this.name = name;
-
    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + Double.toString(price);
+   }
+
 
 
 
