@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class Item {
+public abstract class Item {
    private int price;
    private String name;
    private int count;
@@ -30,8 +30,10 @@ public class Item {
 
     @Override
     public String toString() {
-        return name + " " + Double.toString(price);
+        return String.format("%-20.20s $%.2f", name, price / 100.0);
    }
+
+   public abstract String purchaseSound();
 
 
 

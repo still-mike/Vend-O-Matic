@@ -28,7 +28,7 @@ public class VendingMachineCLI {
     }
 
 
-    public void run() throws FileNotFoundException, InsufficientFundsException, InvalidIdentifierException, SoldOutException {
+    public void run() throws FileNotFoundException {
         boolean running = true;
         while (running) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -61,11 +61,20 @@ public class VendingMachineCLI {
 
                     } else if (choice.equals(SUB_MENU_OPTION_2)) {
                         Map<String, Item> inventoryMap = vendingMachine.getInventoryMap();
-                            for (Map.Entry<String, Item> entry : inventoryMap.entrySet()) {
-                                System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+                        for (Map.Entry<String, Item> entry : inventoryMap.entrySet()) {
+                            System.out.println(entry.getKey() + ": " + entry.getValue().toString());
                         }
-                        System.out.println("Enter code of item you wish to purchase!");
-                        vendingMachine.makePurchase(menu.getSlotIdentifierFromUserInput());
+                        System.out.println("Enter code of item you wish to purchase: ");
+                        try {
+                            Item purchasedItem = vendingMachine.makePurchase(menu.getSlotIdentifierFromUserInput());
+                            System.out.println(purchasedItem.purchaseSound());
+                        } catch (InvalidIdentifierException | SoldOutException | InsufficientFundsException e) {
+                            System.out.println(e.getMessage());;
+
+                        }
+
+//
+
 
                         // Was the current balance updated??
 //                        int funds = menu.fundsReceived();
@@ -75,12 +84,13 @@ public class VendingMachineCLI {
                     }
 
 
-  //              } else (choice.equals(SUB_MENU_OPTION_3)) {
+                    //              } else (choice.equals(SUB_MENU_OPTION_3)) {
 
                 }
 
-                // do purchase
-                // nesting our makepurchase sub menu here
+//
+
+//
 
 
             } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
