@@ -28,23 +28,29 @@ public class VendingMachine {
         return availableFunds;
     }
 
-    public Item makePurchase(String slotIdentifier) throws InvalidIdentifierException {
+    public Item makePurchase(String slotIdentifier) throws InvalidIdentifierException, SoldOutException, InsufficientFundsException {
         // contains key on the map
         if (!inventoryMap.containsKey(slotIdentifier)) {
-            throw new InvalidIdentifierException("This item is invalid " + slotIdentifier);
+            throw new InvalidIdentifierException("This item is invalid: " + slotIdentifier);
         }
         // if it doesn't contain key, throw an invalid identifier exception
 //
         Item purchasedItem = inventoryMap.get(slotIdentifier);
         if (purchasedItem.getCount() == 0) {
+            throw new SoldOutException("This item is sold out: " + slotIdentifier );
             //sold out, throw sold out exception
         }
         // if available funds is less than purchasedItem price
         // if it's less than, throw not enough funds exception
 
-        availableFunds -= purchasedItem.getPrice();
+        if (availableFunds < purchasedItem.getPrice()) {
+            throw new InsufficientFundsException("Insufficient funds available to purchase item: " + slotIdentifier);
+        }
 
         purchasedItem.reduceCount();
+
+        availableFunds -= purchasedItem.getPrice();
+
 
         return purchasedItem;
     }

@@ -13,6 +13,10 @@ public class VendingMachineCLI {
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
     private static final String MAIN_MENU_OPTION_EXIT = "Exit";
     private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT};
+    private static final String SUB_MENU_OPTION_1 = "Feed Money";
+    private static final String SUB_MENU_OPTION_2 = "Select Product ";
+    private static final String SUB_MENU_OPTION_3 = "Finish Transaction";
+    private static final String[] SUB_MENU_OPTIONS = {SUB_MENU_OPTION_1, SUB_MENU_OPTION_2, SUB_MENU_OPTION_3};
 
 
     private Menu menu;
@@ -44,7 +48,27 @@ public class VendingMachineCLI {
 
                 // display vending machine items
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+                boolean subRunning = true;
+                while (subRunning) {
+                    choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
+
+                    if (choice.equals(SUB_MENU_OPTION_1)) {
+                        int currentBalance = funds
+
+
+                        // what happens when customer feeds money?
+                        //"Current Money Provided?" - will be updated as money is fed in
+                    }
+
+//                    } else (choice.equals(SUB_MENU_OPTION_2)) {
+
+
+//                } else (choice.equals(SUB_MENU_OPTION_3)) {
+
+                }
+
                 // do purchase
+                // nesting our makepurchase sub menu here
 
 
             } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {

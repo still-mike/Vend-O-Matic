@@ -7,8 +7,11 @@ import java.util.Scanner;
 
 public class Menu {
 
+
+
 	private PrintWriter out;
 	private Scanner in;
+//
 
 	public Menu(InputStream input, OutputStream output) {
 		this.out = new PrintWriter(output);
@@ -50,4 +53,12 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+
+	private int fundsReceived () {
+		String userInput = in.nextLine();
+		int amountToFeedInitialDollarAmount = Integer.valueOf(userInput);
+		return amountToFeedInitialDollarAmount;
+	}
+
+
 }

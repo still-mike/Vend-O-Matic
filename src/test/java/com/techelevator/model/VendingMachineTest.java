@@ -17,7 +17,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void makePurchase() throws FileNotFoundException, InvalidIdentifierException {
+    public void makePurchase() throws FileNotFoundException, InvalidIdentifierException, InsufficientFundsException, SoldOutException {
         VendingMachine vendingMachine = new VendingMachine();
         vendingMachine.addFunds(1000);
         Item item = vendingMachine.makePurchase("A1");
@@ -33,7 +33,7 @@ public class VendingMachineTest {
     }
 
     @Test(expected = InvalidIdentifierException.class)
-    public void makePurchase_InvalidID() throws FileNotFoundException, InvalidIdentifierException {
+    public void makePurchase_InvalidID() throws FileNotFoundException, InvalidIdentifierException, InsufficientFundsException, SoldOutException {
         VendingMachine vendingMachine = new VendingMachine();
         Item item = vendingMachine.makePurchase("M1");
 
