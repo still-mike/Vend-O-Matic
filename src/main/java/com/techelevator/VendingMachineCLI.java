@@ -80,16 +80,23 @@ public class VendingMachineCLI {
                         int totalDimesToReturn = 0;
                         int totalNickelsToReturn = 0;
 
+                        int quarter = 25;
+                        int dime = 10;
+                        int nickel = 5;
+
                         while (balance > 0) {
 
-                            if (balance >= 0.25) {
+                            if (balance >= quarter) {
                                 totalQuartersToReturn++;
+                                balance -= quarter;
 
-                            } else if (balance >= 0.1) {
+                            } else if (balance >= dime) {
                                 totalDimesToReturn++;
+                                balance -= dime;
 
-                            } else if (balance >= 0.05) {
+                            } else if (balance >= nickel) {
                                 totalNickelsToReturn++;
+                                balance -= nickel;
 
                             }
                         }
