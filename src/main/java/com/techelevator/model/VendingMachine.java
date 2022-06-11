@@ -85,8 +85,8 @@ public class VendingMachine {
                     Item candy = new Candy(parts[1], Double.parseDouble(parts[2]));
                     inventoryMap.put(parts[0], candy);
 
-                } else if (parts[3].equals("Beverage")) {
-                    Item beverage = new Beverage(parts[1], Double.parseDouble(parts[2]));
+                } else if (parts[3].equals("Drink")) {
+                    Item beverage = new Drink(parts[1], Double.parseDouble(parts[2]));
                     inventoryMap.put(parts[0], beverage);
 
 

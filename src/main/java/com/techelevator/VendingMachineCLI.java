@@ -1,7 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.model.Item;
-import com.techelevator.model.VendingMachine;
+import com.techelevator.model.*;
 import com.techelevator.view.Menu;
 
 import java.io.FileNotFoundException;
@@ -29,7 +28,7 @@ public class VendingMachineCLI {
     }
 
 
-    public void run() throws FileNotFoundException {
+    public void run() throws FileNotFoundException, InsufficientFundsException, InvalidIdentifierException, SoldOutException {
         boolean running = true;
         while (running) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -53,17 +52,30 @@ public class VendingMachineCLI {
                     choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
                     if (choice.equals(SUB_MENU_OPTION_1)) {
-                        int currentBalance = funds
+                        System.out.println("How much money would you like to add? (Please add in full dollar amounts only)");
+                        int funds = menu.fundsReceived();
+                        int currentBalance = vendingMachine.addFunds(funds);
 
 
-                        // what happens when customer feeds money?
-                        //"Current Money Provided?" - will be updated as money is fed in
+                        System.out.println("Current balance: $" + currentBalance + ".00");
+
+                    } else if (choice.equals(SUB_MENU_OPTION_2)) {
+                        Map<String, Item> inventoryMap = vendingMachine.getInventoryMap();
+                            for (Map.Entry<String, Item> entry : inventoryMap.entrySet()) {
+                                System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+                        }
+                        System.out.println("Enter code of item you wish to purchase!");
+                        vendingMachine.makePurchase(menu.getSlotIdentifierFromUserInput());
+
+                        // Was the current balance updated??
+//                        int funds = menu.fundsReceived();
+//                        int currentBalance = vendingMachine.addFunds(funds);
+//                        System.out.println(currentBalance);
+
                     }
 
-//                    } else (choice.equals(SUB_MENU_OPTION_2)) {
 
-
-//                } else (choice.equals(SUB_MENU_OPTION_3)) {
+  //              } else (choice.equals(SUB_MENU_OPTION_3)) {
 
                 }
 
@@ -78,7 +90,7 @@ public class VendingMachineCLI {
     }
 
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, InsufficientFundsException, InvalidIdentifierException, SoldOutException {
         Menu menu = new Menu(System.in, System.out);
         VendingMachineCLI cli = new VendingMachineCLI(menu);
         cli.run();

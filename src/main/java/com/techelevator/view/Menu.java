@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
 
-
+	public int fundsReceived;
 	private PrintWriter out;
 	private Scanner in;
 //
@@ -54,11 +54,15 @@ public class Menu {
 		out.flush();
 	}
 
-	private int fundsReceived () {
+	public int fundsReceived() {
 		String userInput = in.nextLine();
-		int amountToFeedInitialDollarAmount = Integer.valueOf(userInput);
-		return amountToFeedInitialDollarAmount;
+		int fundsReceived = Integer.valueOf(userInput);
+		return fundsReceived;
 	}
 
+	public String getSlotIdentifierFromUserInput() {
+		String slotIdentifier = in.nextLine();
+		return slotIdentifier;
 
+	}
 }
