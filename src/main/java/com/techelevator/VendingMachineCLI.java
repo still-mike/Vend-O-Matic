@@ -69,34 +69,48 @@ public class VendingMachineCLI {
                             Item purchasedItem = vendingMachine.makePurchase(menu.getSlotIdentifierFromUserInput());
                             System.out.println(purchasedItem.purchaseSound());
                         } catch (InvalidIdentifierException | SoldOutException | InsufficientFundsException e) {
-                            System.out.println(e.getMessage());;
+                            System.out.println(e.getMessage());
+                            ;
+
+                        }
+                    } else if (choice.equals(SUB_MENU_OPTION_3)) {
+                        int balance = vendingMachine.getAvailableFunds();
+
+                        int totalQuartersToReturn = 0;
+                        int totalDimesToReturn = 0;
+                        int totalNickelsToReturn = 0;
+
+                        while (balance > 0) {
+
+                            if (balance >= 0.25) {
+                                totalQuartersToReturn++;
+
+                            } else if (balance >= 0.1) {
+                                totalDimesToReturn++;
+
+                            } else if (balance >= 0.05) {
+                                totalNickelsToReturn++;
+
+                            }
+                        }
+
+
+                            balance = 0;
+
+                            String returnChangeMessage = "Your change is " + totalQuartersToReturn + " quarters, " + totalDimesToReturn + " dimes and " + totalNickelsToReturn + " nickels.";
+                            System.out.println(returnChangeMessage);
 
                         }
 
-//
-
-
-                        // Was the current balance updated??
-//                        int funds = menu.fundsReceived();
-//                        int currentBalance = vendingMachine.addFunds(funds);
-//                        System.out.println(currentBalance);
-
                     }
 
-
-                    //              } else (choice.equals(SUB_MENU_OPTION_3)) {
-
-                }
-
-//
-
-//
 
 
             } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
                 running = false;
             }
         }
+
     }
 
 

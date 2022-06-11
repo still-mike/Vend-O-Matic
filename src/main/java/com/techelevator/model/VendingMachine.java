@@ -97,6 +97,8 @@ public class VendingMachine {
 
         }
 
+        // General getChange method
+
 
     }
 }
