@@ -15,10 +15,9 @@ public class Inventory {
     Scanner fileScanner = new Scanner(inventoryFile);
 
 
-    public Inventory () throws FileNotFoundException {
+    public Inventory() throws FileNotFoundException {
 
     }
-
 
 
 }
