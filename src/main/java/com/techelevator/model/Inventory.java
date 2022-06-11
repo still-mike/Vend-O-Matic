@@ -23,6 +23,15 @@ public class Inventory {
 
 }
 
+//    String filePath = "C:\\Users\\Student\\workspace\\mod-1-capstone-java-team-1\\vendingmachine.csv";
+//    File inputFile = new File(filePath);
+
+//try (Scanner fileScanner = new Scanner(inputFile)) {
+//        int lineNumber = 1;
+//        while (fileScanner.hasNextLine()) {
+//        String line = fileScanner.nextLine();
+//        String[] parts = line.split("\\|");
+
 // start inventory for each item at 5
 
 // decrease individual quantity when customer purchases an item

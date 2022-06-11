@@ -6,37 +6,56 @@ import java.util.*;
 
 public class VendingMachine {
     private int availableFunds; //derived
-    private Map<String, Object> inventoryMap;
+    private Map<String, Item> inventoryMap;
     private int customerChange; //derived
 
 
-    public VendingMachine(Map<String,Object> inventoryMap) {
-        this.inventoryMap = inventoryMap;
+    public VendingMachine() throws FileNotFoundException {
+        inventoryMap = loadInventory();
     }
 
-    public VendingMachine() {}
+    public Map<String, Item> getInventoryMap() throws FileNotFoundException {
 
-    public Map<String, Object> getInventoryMap() throws FileNotFoundException {
-        inventoryMap = loadInventory();
         return inventoryMap;
     }
 
-    public int addFunds(int funds){
+    public int addFunds(int funds) {
         availableFunds += funds;
         return availableFunds;
     }
 
-//    public List<Item> makePurchase() {
-//        List<Item> purchased = new ArrayList<>();
-//    }
+    public int getAvailableFunds() {
+        return availableFunds;
+    }
+
+    public Item makePurchase(String slotIdentifier) throws InvalidIdentifierException {
+        // contains key on the map
+        if (!inventoryMap.containsKey(slotIdentifier)) {
+            throw new InvalidIdentifierException("This item is invalid " + slotIdentifier);
+        }
+        // if it doesn't contain key, throw an invalid identifier exception
+//
+        Item purchasedItem = inventoryMap.get(slotIdentifier);
+        if (purchasedItem.getCount() == 0) {
+            //sold out, throw sold out exception
+        }
+        // if available funds is less than purchasedItem price
+        // if it's less than, throw not enough funds exception
+
+        availableFunds -= purchasedItem.getPrice();
+
+        purchasedItem.reduceCount();
+
+        return purchasedItem;
+    }
 
 
-    private Map<String, Object> loadInventory() throws FileNotFoundException {
+    private Map<String, Item> loadInventory() throws FileNotFoundException {
 
         String filePath = "C:\\Users\\Student\\workspace\\mod-1-capstone-java-team-1\\vendingmachine.csv";
         File inputFile = new File(filePath);
 
-        Map<String, Object> inventoryMap = new TreeMap<>();
+        Map<String, Item> inventoryMap = new TreeMap<>();
 
 
         try (Scanner fileScanner = new Scanner(inputFile)) {
