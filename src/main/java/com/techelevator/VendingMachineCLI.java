@@ -70,11 +70,12 @@ public class VendingMachineCLI {
                             System.out.println(purchasedItem.purchaseSound());
                         } catch (InvalidIdentifierException | SoldOutException | InsufficientFundsException e) {
                             System.out.println(e.getMessage());
-                            ;
 
                         }
                     } else if (choice.equals(SUB_MENU_OPTION_3)) {
                         int balance = vendingMachine.getAvailableFunds();
+                        double balanceToDollarDouble = (double) balance / 100;
+                        System.out.println(balanceToDollarDouble);
 
                         int totalQuartersToReturn = 0;
                         int totalDimesToReturn = 0;

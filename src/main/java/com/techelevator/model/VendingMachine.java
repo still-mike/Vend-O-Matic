@@ -8,6 +8,10 @@ public class VendingMachine {
     private int availableFunds; //derived
     private Map<String, Item> inventoryMap;
     private int customerChange; //derived
+    private double currentAmountAsDouble;
+    private double availableFundsAsDouble;
+    private int priceInPennies;
+    private int availableFundsInPennies;
 
 
     public VendingMachine() throws FileNotFoundException {
@@ -23,6 +27,10 @@ public class VendingMachine {
         availableFunds += funds;
         return availableFunds;
     }
+
+
+
+    //availableFundsAsDouble += funds
 
     public int getAvailableFunds() {
         return availableFunds;
@@ -43,13 +51,16 @@ public class VendingMachine {
         // if available funds is less than purchasedItem price
         // if it's less than, throw not enough funds exception
 
-        if (availableFunds < purchasedItem.getPrice()) {
+        if (availableFunds < ((double)purchasedItem.getPrice())/100) {
             throw new InsufficientFundsException("Insufficient funds available to purchase item: " + slotIdentifier);
         }
 
-        purchasedItem.reduceCount();
+        purchasedItem.reduceCount();                                            // availableFunds -= purchasedItem.getPrice
 
-        availableFunds -= purchasedItem.getPrice();
+        int priceInPennies = purchasedItem.getPrice();
+        int availableFundsinPennies = availableFunds * 100;
+        availableFunds = availableFundsinPennies - priceInPennies;
+
 
 
         return purchasedItem;

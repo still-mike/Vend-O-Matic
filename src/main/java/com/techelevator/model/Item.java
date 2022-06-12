@@ -12,7 +12,7 @@ public abstract class Item {
    }
 
     public int getPrice() {
-        return price / 100;
+        return price;
     }
 
     public int getCount() {
