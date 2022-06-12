@@ -57,7 +57,7 @@ public class VendingMachineCLI {
                         int currentBalance = vendingMachine.addFunds(funds);
 
 
-                        System.out.println("Current balance: $" + currentBalance + ".00");
+                        System.out.printf("Current balance: $%.2f%n", currentBalance / 100.0);
 
                     } else if (choice.equals(SUB_MENU_OPTION_2)) {
                         Map<String, Item> inventoryMap = vendingMachine.getInventoryMap();
@@ -73,9 +73,9 @@ public class VendingMachineCLI {
 
                         }
                     } else if (choice.equals(SUB_MENU_OPTION_3)) {
-                        int balance = vendingMachine.getAvailableFunds();
-                        double balanceToDollarDouble = (double) balance / 100;
-                        System.out.println(balanceToDollarDouble);
+                        int balance = vendingMachine.returnChange();
+                        double balanceToDollarDouble = (double) balance / 100.0;
+                        System.out.printf("$%.2f%n", balanceToDollarDouble);
 
                         int totalQuartersToReturn = 0;
                         int totalDimesToReturn = 0;

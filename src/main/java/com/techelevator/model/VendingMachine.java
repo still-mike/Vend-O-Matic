@@ -24,7 +24,7 @@ public class VendingMachine {
     }
 
     public int addFunds(int funds) {
-        availableFunds += funds;
+        availableFunds += funds * 100;
         return availableFunds;
     }
 
@@ -51,19 +51,25 @@ public class VendingMachine {
         // if available funds is less than purchasedItem price
         // if it's less than, throw not enough funds exception
 
-        if (availableFunds < ((double)purchasedItem.getPrice())/100) {
+        if (availableFunds < purchasedItem.getPrice()) {
             throw new InsufficientFundsException("Insufficient funds available to purchase item: " + slotIdentifier);
         }
 
-        purchasedItem.reduceCount();                                            // availableFunds -= purchasedItem.getPrice
+        purchasedItem.reduceCount();
+        availableFunds -= purchasedItem.getPrice();
 
-        int priceInPennies = purchasedItem.getPrice();
-        int availableFundsinPennies = availableFunds * 100;
-        availableFunds = availableFundsinPennies - priceInPennies;
+
 
 
 
         return purchasedItem;
+    }
+
+    public int returnChange() {
+        int changeToReturn = availableFunds;
+        availableFunds = 0;
+        return changeToReturn;
+
     }
 
 
