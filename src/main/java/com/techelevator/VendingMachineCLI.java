@@ -52,7 +52,7 @@ public class VendingMachineCLI {
                     choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
                     if (choice.equals(SUB_MENU_OPTION_1)) {
-                        System.out.println("How much money would you like to add? (Please add in full dollar amounts only)");
+                        System.out.println("Please add funds to the machine in whole dollar amounts only: ");
                         int funds = menu.fundsReceived();
                         int currentBalance = vendingMachine.addFunds(funds);
 

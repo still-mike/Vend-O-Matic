@@ -14,6 +14,21 @@ public class VendingMachineTest {
 
     @Test
     public void addFunds() {
+        // Arrange - arranging conditions of the test - setting up test data
+//        int theFunds = 3;
+//        int correctAmountFunds = theFunds.get
+
+
+        // Act - perform the action of interest - the thing you're testing
+
+
+        // Assert - validate that the expected outcome occurred by means of an assertion - a certain value was returned, or a file exists.
+
+        //availableFunds += funds * 100;
+        //        return availableFunds;
+        //    }
+
+
     }
 
     @Test
