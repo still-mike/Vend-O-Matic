@@ -1,3 +1,3 @@
-# Mod1-Capstone-Java-Main
+# Vending Machine
 
-Module 1 Capstone - Vending Machine Application
+My first capstone project at Tech Elevator - A CLI application that simulates a vending machine, grounded in the Four Principles of Object-Oriented Programming.
